@@ -33,19 +33,19 @@ void setup()
         ; // Halt
       Serial.print(F("\r\nPS4 Bluetooth Library Started"));
     }
-
-  void loop()
-  {
-    // Functie van de Usb class die wordt gebruikt om alle functies te callen binnen de Usb class die elke keer nodig zijn.
-    Usb.Task();
-
-    if (PS4.connected())
-    {
-      // Output een PWM signaal naar de eerder benoemde output pin. Analog write accepteert waarden tussen de 0 en 255 en de getAnalogButton functie output waarden tussen de 0 en 255 dus dit komt perfect uit.
-      analogWrite(3, PS4.getAnalogButton(R2));
-    }
-
-    // Laat de controller fysiek trillen, dit zorgt voor het makkelijk debuggen van de code.
-    PS4.setRumbleOn(PS4.getAnalogButton(L2), PS4.getAnalogButton(R2));
-  }
 }
+void loop()
+{
+  // Functie van de Usb class die wordt gebruikt om alle functies te callen binnen de Usb class die elke keer nodig zijn.
+  Usb.Task();
+
+  if (PS4.connected())
+  {
+    // Output een PWM signaal naar de eerder benoemde output pin. Analog write accepteert waarden tussen de 0 en 255 en de getAnalogButton functie output waarden tussen de 0 en 255 dus dit komt perfect uit.
+    analogWrite(3, PS4.getAnalogButton(R2));
+  }
+
+  // Laat de controller fysiek trillen, dit zorgt voor het makkelijk debuggen van de code.
+  PS4.setRumbleOn(PS4.getAnalogButton(L2), PS4.getAnalogButton(R2));
+}
+
